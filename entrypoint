@@ -6,15 +6,15 @@ set -e
 echo 'Creating /etc/Caddyfile based on Caddyfile.template.' >&2
 
 # Set default values
-: \
-    "${URL:=0.0.0.0}" \
-    "${APP_PATH:=/var/www/html/public}" \
-    "${TLS_OPTIONS:=off}" \
-    "${APP_HOST:=app}" \
-    "${APP_PORT:=9000}"
+export \
+    URL="${URL:-0.0.0.0:80}" \
+    APP_PATH="${APP_PATH:-/var/www/html/public}" \
+    TLS_OPTIONS="${TLS_OPTIONS:-off}" \
+    APP_HOST="${APP_HOST:-app}" \
+    APP_PORT="${APP_PORT:-9000}"
 
-envsubst '\$URL \$TLS_OPTIONS \$APP_HOST \$APP_PORT \$APP_PATH \$BASIC_AUTH_OPTIONS' < Caddyfile.template > /etc/Caddyfile
+envsubst '$URL $TLS_OPTIONS $APP_HOST $APP_PORT $APP_PATH $BASIC_AUTH_OPTIONS' < Caddyfile.template > /etc/Caddyfile
 
 echo 'Starting Caddy.' >&2
 
-/bin/parent caddy --conf /etc/Caddyfile --log stdout --agree="$ACME_AGREE"
+exec caddy --conf /etc/Caddyfile --log stdout --agree="$ACME_AGREE"
