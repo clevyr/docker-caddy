@@ -5,8 +5,10 @@ ENV ACME_AGREE=true
 WORKDIR /data
 
 RUN set -x \
-    && apk --no-cache add gettext
+    && apk --no-cache add \
+        bash \
+        gettext
 
 COPY Caddyfile.template entrypoint ./
 
-ENTRYPOINT ["./entrypoint"]
+ENTRYPOINT ["bash", "./entrypoint"]
