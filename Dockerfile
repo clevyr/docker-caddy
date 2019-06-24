@@ -9,4 +9,4 @@ RUN set -x \
 
 COPY Caddyfile.template entrypoint ./
 
-ENTRYPOINT ["entrypoint"]
+ENTRYPOINT ["./entrypoint"]
