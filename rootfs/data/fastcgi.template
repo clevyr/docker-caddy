@@ -1,0 +1,5 @@
+fastcgi / ${APP_HOST}:${APP_PORT} php
+rewrite {
+    ${NOT}
+    to {path} {path}/ /index.php?{query}
+}

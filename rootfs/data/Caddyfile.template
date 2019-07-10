@@ -2,9 +2,6 @@ ${URL}
 root ${APP_PATH}
 tls ${TLS_OPTIONS}
 gzip
+log stdout
 ${BASIC_AUTH_OPTIONS}
 
-fastcgi / ${APP_HOST}:${APP_PORT} php
-rewrite {
-    to {path} {path}/ /index.php?{query}
-}
