@@ -11,9 +11,18 @@ export \
     APP_PATH="${APP_PATH:-/var/www/html/public}" \
     TLS_OPTIONS="${TLS_OPTIONS:-off}" \
     APP_HOST="${APP_HOST:-app}" \
-    APP_PORT="${APP_PORT:-9000}"
+    APP_PORT="${APP_PORT:-9000}" \
 
-envsubst '$URL $TLS_OPTIONS $APP_HOST $APP_PORT $APP_PATH $BASIC_AUTH_OPTIONS' < Caddyfile.template > /etc/Caddyfile
+export \
+    SOCKET_HOST="${SOCKET_HOST:-$APP_HOST}" \
+    SOCKET_PATH="${SOCKET_PATH:-socket.io}" \
+    SOCKET_PORT="${SOCKET_PORT:-6001}"
+
+if [ "$SOCKET_PROXY" = "true" ]; then
+    cat socket.template >> Caddyfile.template
+fi
+
+envsubst '$URL $TLS_OPTIONS $APP_HOST $APP_PORT $APP_PATH $BASIC_AUTH_OPTIONS $SOCKET_PATH $SOCKET_HOST $SOCKET_PORT' < Caddyfile.template > /etc/Caddyfile
 
 echo 'Starting Caddy.' >&2
 
