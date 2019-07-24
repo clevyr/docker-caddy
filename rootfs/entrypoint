@@ -24,7 +24,11 @@ if [ "$SOCKET_PROXY" = "true" ]; then
         NOT="if {path} not_starts_with ${SOCKET_PATH}"
 fi
 
-cat fastcgi.template >> Caddyfile.template
+if [ "$REVERSE_PROXY" = "true" ]; then
+    cat proxy.template >> Caddyfile.template
+else
+    cat fastcgi.template >> Caddyfile.template
+fi
 
 envsubst '$URL $TLS_OPTIONS $APP_HOST $APP_PORT $APP_PATH $BASIC_AUTH_OPTIONS $SOCKET_PATH $SOCKET_HOST $SOCKET_PORT $NOT' < Caddyfile.template > /etc/Caddyfile
 

@@ -1,0 +1,3 @@
+proxy / ${APP_HOST}:${APP_PORT} {
+  transparent
+}
