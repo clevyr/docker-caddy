@@ -21,7 +21,17 @@ www.{$SITE_ADDRESS} {
   redir https://{$SITE_ADDRESS}{uri} permanent
 }
 
-# Serve the app
+# App
 {$SITE_ADDRESS}, *.{$SITE_ADDRESS} {
-  reverse_proxy app
+  reverse_proxy {$APP_ADDRESS}
+}
+
+# API
+api.{$SITE_ADDRESS} {
+  reverse_proxy {$API_ADDRESS}
+}
+
+# Maildev
+mail.{$SITE_ADDRESS} {
+  reverse_proxy {$MAILDEV_ADDRESS}
 }
