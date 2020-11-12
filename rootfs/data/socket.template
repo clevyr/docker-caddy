@@ -1,3 +1,0 @@
-proxy ${SOCKET_PATH} ${SOCKET_HOST}:${SOCKET_PORT} {
-    websocket
-}

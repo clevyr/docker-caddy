@@ -1,0 +1,27 @@
+{
+  local_certs
+  # Disable auto_https redirects since we don't want permanent redirects to https
+  auto_https disable_redirects
+}
+
+# Redirect http to https
+http://, https:// {
+  redir https://{$SITE_ADDRESS}{uri}
+  tls {
+    on_demand
+  }
+}
+
+http://{$SITE_ADDRESS}, http://*.{$SITE_ADDRESS} {
+  redir https://{host}{uri} permanent
+}
+
+# Redirect www domains to the app
+www.{$SITE_ADDRESS} {
+  redir https://{$SITE_ADDRESS}{uri} permanent
+}
+
+# Serve the app
+{$SITE_ADDRESS}, *.{$SITE_ADDRESS} {
+  reverse_proxy app
+}

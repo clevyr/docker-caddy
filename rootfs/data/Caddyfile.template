@@ -1,7 +1,0 @@
-${URL}
-root ${APP_PATH}
-tls ${TLS_OPTIONS}
-gzip
-log stdout
-${BASIC_AUTH_OPTIONS}
-
