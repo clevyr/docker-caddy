@@ -4,6 +4,12 @@
   auto_https disable_redirects
 }
 
+(log) {
+  log {
+    output {$LOG_OUTPUT}
+  }
+}
+
 # Redirect http to https
 http://, https:// {
   redir https://{$SITE_ADDRESS}{uri}
@@ -25,14 +31,17 @@ www.{$SITE_ADDRESS} {
 {$SITE_ADDRESS}, *.{$SITE_ADDRESS} {
   reverse_proxy /socket.io/* {$SOCKETIO_ADDRESS}
   reverse_proxy {$APP_ADDRESS}
+  import log
 }
 
 # API
 api.{$SITE_ADDRESS} {
   reverse_proxy {$API_ADDRESS}
+  import log
 }
 
 # Maildev
 mail.{$SITE_ADDRESS} {
   reverse_proxy {$MAILDEV_ADDRESS}
+  import log
 }
