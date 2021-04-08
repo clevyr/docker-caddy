@@ -40,8 +40,8 @@ api.{$SITE_ADDRESS} {
   import log
 }
 
-# Maildev
+# Local SMTP
 mail.{$SITE_ADDRESS} {
-  reverse_proxy {$MAILDEV_ADDRESS}
+  reverse_proxy {$MAIL_ADDRESS}
   import log
 }
