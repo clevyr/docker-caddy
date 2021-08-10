@@ -5,7 +5,7 @@ Preconfigured Caddy container for local https development environments.
 ## Pull Command
 
 ```sh
-docker pull clevyr/caddy
+docker pull ghcr.io/clevyr/caddy
 ```
 
 ## Config
