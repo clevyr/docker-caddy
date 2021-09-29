@@ -1,5 +1,7 @@
 # docker-caddy
 
+[![Docker Build](https://github.com/clevyr/docker-caddy/actions/workflows/docker.yml/badge.svg)](https://github.com/clevyr/docker-caddy/actions/workflows/docker.yml)
+
 Preconfigured Caddy container for local https development environments.
 
 ## Pull Command
