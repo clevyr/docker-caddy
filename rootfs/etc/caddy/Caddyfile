@@ -24,7 +24,7 @@ http://{$SITE_ADDRESS}, http://*.{$SITE_ADDRESS} {
 
 # Redirect www domains to the app
 www.{$SITE_ADDRESS} {
-  redir https://{$SITE_ADDRESS}{uri} permanent
+  redir https://{$SITE_ADDRESS}{uri}
 }
 
 # App
