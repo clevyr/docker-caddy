@@ -10,16 +10,6 @@
   }
 }
 
-(cors) {
-  @options method OPTIONS
-  handle @options {
-    header Access-Control-Max-Age 60
-    header Access-Control-Allow-Headers Authorization
-    respond 204
-  }
-  header Access-Control-Allow-Origin {header.origin}
-}
-
 # Redirect http to https
 http://, https:// {
   redir https://{$SITE_ADDRESS}{uri}
@@ -39,7 +29,6 @@ www.{$SITE_ADDRESS} {
 
 # App
 {$SITE_ADDRESS}, *.{$SITE_ADDRESS} {
-  import cors
   reverse_proxy /socket.io/* {$SOCKETIO_ADDRESS}
   reverse_proxy {$APP_ADDRESS}
   import log
@@ -47,7 +36,6 @@ www.{$SITE_ADDRESS} {
 
 # API
 api.{$SITE_ADDRESS} {
-  import cors
   reverse_proxy {$API_ADDRESS}
   import log
 }
