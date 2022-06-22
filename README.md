@@ -12,15 +12,16 @@ docker pull ghcr.io/clevyr/caddy
 
 ## Config
 
-| Variable              | Description                                                                                                              | Default      |
-|-----------------------|--------------------------------------------------------------------------------------------------------------------------|--------------|
-| `SITE_ADDRESS`        | [Address](https://caddyserver.com/docs/caddyfile/concepts#addresses) used to serve requests.                             | `clevyr.run` |
-| `APP_ADDRESS`         | Upstream for `https://$SITE_ADDRESS/*` and wildcard subdomains.                                                          | `app`        |
-| `API_ADDRESS`         | Upstream for `https://api.$SITE_ADDRESS/*`.                                                                              | `app`        |
-| `BROWSERSYNC_ADDRESS` | Upstream for `https://$SITE_ADDRESS/browser-sync/*`.                                                                     | `hot:3000`   |
-| `MAIL_ADDRESS`        | Upstream for `https://mail.$SITE_ADDRESS/*`.                                                                             | `mail`       |
-| `SOCKETIO_ADDRESS`    | Upstream for `https://$SITE_ADDRESS/socket.io/*`                                                                         | `app`        |
-| `LOG_OUTPUT`          | Log output module. See [Caddy log output modules](https://caddyserver.com/docs/caddyfile/directives/log#output-modules). | `discard`    |
+| Variable                 | Description                                                                                                              | Default      |
+|--------------------------|--------------------------------------------------------------------------------------------------------------------------|--------------|
+| `SITE_ADDRESS`           | [Address](https://caddyserver.com/docs/caddyfile/concepts#addresses) used to serve requests.                             | `clevyr.run` |
+| `APP_ADDRESS`            | Upstream for `https://$SITE_ADDRESS/*` and wildcard subdomains.                                                          | `app`        |
+| `API_ADDRESS`            | Upstream for `https://api.$SITE_ADDRESS/*`.                                                                              | `app`        |
+| `BROWSERSYNC_ADDRESS`    | Upstream for `https://$SITE_ADDRESS/browser-sync/*`.                                                                     | `hot:3000`   |
+| `BROWSERSYNC_UI_ADDRESS` | Upstream for `https://browsersync.$SITE_ADDRESS/`.                                                                       | `hot:3001`   |
+| `MAIL_ADDRESS`           | Upstream for `https://mail.$SITE_ADDRESS/*`.                                                                             | `mail`       |
+| `SOCKETIO_ADDRESS`       | Upstream for `https://$SITE_ADDRESS/socket.io/*`                                                                         | `app`        |
+| `LOG_OUTPUT`             | Log output module. See [Caddy log output modules](https://caddyserver.com/docs/caddyfile/directives/log#output-modules). | `discard`    |
 
 ## Usage
 

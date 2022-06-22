@@ -46,3 +46,9 @@ mail.{$SITE_ADDRESS} {
   reverse_proxy {$MAIL_ADDRESS}
   import log
 }
+
+# Browsersync UI
+browsersync.{$SITE_ADDRESS} {
+  reverse_proxy {$BROWSERSYNC_UI_ADDRESS}
+  import log
+}
