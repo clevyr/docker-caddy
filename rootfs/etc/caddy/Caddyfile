@@ -52,3 +52,9 @@ browsersync.{$SITE_ADDRESS} {
   reverse_proxy {$BROWSERSYNC_UI_ADDRESS}
   import log
 }
+
+# Websockets
+ws.{$SITE_ADDRESS} {
+  reverse_proxy {$WS_ADDRESS}
+  import log
+}
