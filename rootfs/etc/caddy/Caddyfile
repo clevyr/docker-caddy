@@ -47,6 +47,12 @@ mail.{$SITE_ADDRESS} {
   import log
 }
 
+# Hot reloader
+hot.{$SITE_ADDRESS} {
+  reverse_proxy {$HOT_ADDRESS}
+  import log
+}
+
 # Browsersync UI
 browsersync.{$SITE_ADDRESS} {
   reverse_proxy {$BROWSERSYNC_UI_ADDRESS}
