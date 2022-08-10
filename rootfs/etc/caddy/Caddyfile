@@ -29,7 +29,6 @@ www.{$SITE_ADDRESS} {
 
 # App
 {$SITE_ADDRESS}, *.{$SITE_ADDRESS} {
-  reverse_proxy /browser-sync/* {$BROWSERSYNC_ADDRESS}
   reverse_proxy /socket.io/* {$SOCKETIO_ADDRESS}
   reverse_proxy {$APP_ADDRESS}
   import log
@@ -50,12 +49,6 @@ mail.{$SITE_ADDRESS} {
 # Hot reloader
 hot.{$SITE_ADDRESS} {
   reverse_proxy {$HOT_ADDRESS}
-  import log
-}
-
-# Browsersync UI
-browsersync.{$SITE_ADDRESS} {
-  reverse_proxy {$BROWSERSYNC_UI_ADDRESS}
   import log
 }
 

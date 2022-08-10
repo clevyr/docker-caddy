@@ -17,8 +17,6 @@ docker pull ghcr.io/clevyr/caddy
 | `SITE_ADDRESS`           | [Address](https://caddyserver.com/docs/caddyfile/concepts#addresses) used to serve requests.                             | `clevyr.run`            |
 | `APP_ADDRESS`            | Upstream for `https://$SITE_ADDRESS/*` and wildcard subdomains.                                                          | `app`                   |
 | `API_ADDRESS`            | Upstream for `https://api.$SITE_ADDRESS/*`.                                                                              | `app`                   |
-| `BROWSERSYNC_ADDRESS`    | Upstream for `https://$SITE_ADDRESS/browser-sync/*`.                                                                     | `hot:3000`              |
-| `BROWSERSYNC_UI_ADDRESS` | Upstream for `https://browsersync.$SITE_ADDRESS/`.                                                                       | `hot:3001`              |
 | `HOT_ADDRESS`            | Upstream for `https://hot.$SITE_ADDRESS/`.                                                                               | `hot:3000`              |
 | `MAIL_ADDRESS`           | Upstream for `https://mail.$SITE_ADDRESS/*`.                                                                             | `mail`                  |
 | `WS_ADDRESS`             | Upstream for `https://ws.$SITE_ADDRESS/*`.                                                                               | `websocket-server:6001` |
