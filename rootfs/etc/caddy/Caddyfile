@@ -3,6 +3,7 @@
   # Disable auto_https redirects since we don't want permanent redirects to https
   auto_https disable_redirects
   ocsp_stapling off
+  skip_install_trust
 }
 
 (log) {
