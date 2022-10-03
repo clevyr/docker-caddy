@@ -33,7 +33,7 @@ jobs:
       - name: Test Config
         run: |
           docker run --rm -i ${{ steps.docker_build_test.outputs.imageid }} \
-            caddy validate -config /etc/caddy/Caddyfile
+            caddy validate --config /etc/caddy/Caddyfile
 
       - name: Docker meta
         id: meta
