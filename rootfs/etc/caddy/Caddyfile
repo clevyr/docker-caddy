@@ -12,32 +12,20 @@
   }
 }
 
-# Redirect http to https
-http://, https:// {
-  redir https://{$SITE_ADDRESS}{uri}
-  tls {
-    on_demand
-  }
-}
-
-http://{$SITE_ADDRESS}, http://*.{$SITE_ADDRESS} {
-  redir https://{host}{uri} permanent
-}
-
 # Redirect www domains to the app
-www.{$SITE_ADDRESS} {
+www.{$SITE_ADDRESS}, http://www.{$SITE_ADDRESS} {
   redir https://{$SITE_ADDRESS}{uri}
 }
 
 # App
-{$SITE_ADDRESS}, *.{$SITE_ADDRESS} {
+{$SITE_ADDRESS}, *.{$SITE_ADDRESS}, http:// {
   reverse_proxy /socket.io/* {$SOCKETIO_ADDRESS}
   reverse_proxy {$APP_ADDRESS}
   import log
 }
 
 # API
-api.{$SITE_ADDRESS} {
+api.{$SITE_ADDRESS}, http://api.{$SITE_ADDRESS} {
   reverse_proxy {$API_ADDRESS}
   import log
 }
@@ -49,13 +37,13 @@ mail.{$SITE_ADDRESS} {
 }
 
 # Hot reloader
-hot.{$SITE_ADDRESS} {
+hot.{$SITE_ADDRESS}, http://hot.{$SITE_ADDRESS} {
   reverse_proxy {$HOT_ADDRESS}
   import log
 }
 
 # Websockets
-ws.{$SITE_ADDRESS} {
+ws.{$SITE_ADDRESS}, http://ws.{$SITE_ADDRESS} {
   reverse_proxy {$WS_ADDRESS}
   import log
 }
