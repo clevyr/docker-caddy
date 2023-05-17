@@ -2,7 +2,7 @@ name: Docker Build
 
 on:
   push:
-    branches: master
+    branches: main
 
 env:
   image: clevyr/caddy
@@ -41,7 +41,7 @@ jobs:
             clevyr/caddy
             ghcr.io/clevyr/caddy
           tags: |
-            type=raw,priority=1000,value=latest,enable=${{ github.ref == format('refs/heads/{0}', 'master') }}
+            type=raw,priority=1000,value=latest,enable=${{ github.ref == 'refs/heads/main' }}
             type=ref,event=branch
             type=sha
 
