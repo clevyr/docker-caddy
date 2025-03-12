@@ -31,7 +31,7 @@ Add this Docker image to an app's `docker-compose.yml` with a volume bind in a g
 
 ```yaml
 proxy:
-  image: clevyr/caddy
+  image: ghcr.io/clevyr/caddy
   ports:
     - 80:80
     - 443:443
